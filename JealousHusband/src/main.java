@@ -22,6 +22,7 @@ public class main {
 			System.out.println("\nBreadth First Search failed.");
 		}
 		
+		
 		System.out.println("\n\nA* SEARCH\n");
 		
 		cost = AStarSearch();
