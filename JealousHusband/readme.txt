@@ -12,7 +12,7 @@ Transition model:
 	State is updated to reflect those who crossed to the other side. It is assumed that each man never leaves his
 	wife with another man. Thus, a step is valid if for each side of the river, there is no man, or the number of
 	men is less than those of women. In other words, a step is valid if:
-			(men_on_left == 0 || men_on_left <= women_on_left) && (men_on_left == 3 || women_on_left <= men_on_left)
+			(men_on_left == 0 || women_on_left <= men_on_left) && (men_on_left == 3 || men_on_left <= women_on_left)
 
 Goal test:
 	All people in the environment as well as the boat are on the right side, i.e. g = (0,0,0)
