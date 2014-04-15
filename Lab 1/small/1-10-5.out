@@ -1,0 +1,13 @@
+m=1 n=10
+Resident 0 Hospital 0
+Resident 1 Hospital -1
+Resident 2 Hospital -1
+Resident 3 Hospital -1
+Resident 4 Hospital 0
+Resident 5 Hospital 0
+Resident 6 Hospital -1
+Resident 7 Hospital 0
+Resident 8 Hospital 0
+Resident 9 Hospital -1
+Gale-Shapley: stable? true
+

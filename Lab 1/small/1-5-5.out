@@ -1,0 +1,8 @@
+m=1 n=5
+Resident 0 Hospital 0
+Resident 1 Hospital 0
+Resident 2 Hospital 0
+Resident 3 Hospital 0
+Resident 4 Hospital 0
+Gale-Shapley: stable? true
+
