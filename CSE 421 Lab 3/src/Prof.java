@@ -1,5 +1,20 @@
 class Prof {
-	public void evaluate(Graded[] gradeArray) {
+	
+	Graded[] students;
+	short credits;
+	
+	Prof(Graded[] allStudents) {
+		students = allStudents;
+		credits = (short) ((Math.random() * 5) + 1);
+	}
+	
+	Prof(Graded[] allStudents, short creditHours) {
+		assert(creditHours >= 1 && creditHours <= 5);
+		students = allStudents;
+		credits = creditHours;
+	}
+	
+	public void evaluate() {
 		/*
 		 * // Declare final variables since we decide to assign the same grade
 		 * to every object in the array final short CREDIT = 3; final
@@ -7,12 +22,13 @@ class Prof {
 		 * assigning the grades to each object for (int i = 0; i <
 		 * gradeArray.length; i++){ gradeArray[i].assignGrade(CREDIT, GRADE); }
 		 */
-
+		
+		assert(students != null);
+		
 		// Randomly assign grades
 		LetterGrade grade;
-		short credits = (short) ((Math.random() * 5) + 1);
 
-		for (int j = 0; j < gradeArray.length; j++) {
+		for (int j = 0; j < students.length; j++) {
 			
 			int value = (int) (Math.random() * 10);
 			
@@ -51,7 +67,24 @@ class Prof {
 				grade = LetterGrade.EPURE;
 			}
 
-			gradeArray[j].assignGrade(credits, grade);
+			students[j].assignGrade(credits, grade);
+		}
+	}
+	
+	public void evaluate(LetterGrade[] grades) {
+		/*
+		 * // Declare final variables since we decide to assign the same grade
+		 * to every object in the array final short CREDIT = 3; final
+		 * LetterGrade GRADE = LetterGrade.CPURE; // Loop through the array,
+		 * assigning the grades to each object for (int i = 0; i <
+		 * gradeArray.length; i++){ gradeArray[i].assignGrade(CREDIT, GRADE); }
+		 */
+		
+		assert(students != null);
+		assert(grades.length == students.length);
+
+		for (int j = 0; j < students.length; j++) {
+			students[j].assignGrade(credits, grades[j]);
 		}
 	}
 }
