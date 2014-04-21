@@ -1,6 +1,6 @@
 public class Prof {
 	
-	Student[] students;
+	public Student[] students;
 	short credits;
 	
 	Prof(Student[] allStudents) {
@@ -14,7 +14,7 @@ public class Prof {
 		credits = creditHours;
 	}
 	
-	public void evaluate() {
+	public Student[] evaluate() {
 		/*
 		 * // Declare final variables since we decide to assign the same grade
 		 * to every object in the array final short CREDIT = 3; final
@@ -69,9 +69,11 @@ public class Prof {
 
 			students[j].assignGrade(credits, grade);
 		}
+		
+		return students;
 	}
 	
-	public void evaluate(LetterGrade[] grades) {
+	public Student[] evaluate(LetterGrade[] grades) {
 		/*
 		 * // Declare final variables since we decide to assign the same grade
 		 * to every object in the array final short CREDIT = 3; final
@@ -86,5 +88,11 @@ public class Prof {
 		for (int j = 0; j < students.length; j++) {
 			students[j].assignGrade(credits, grades[j]);
 		}
+		
+		return students;
+	}
+	
+	public short getCredits() {
+		return credits;
 	}
 }
