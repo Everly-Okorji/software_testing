@@ -20,11 +20,11 @@ public class TA {
 		
 		in.close();
 		
-		Graded[] students = new Graded[numStudents];
+		Student[] students = new Student[numStudents];
 
 		// Create 10 students
 		for (int i = 0; i < numStudents; i++) {
-			students[i] = new Undergrad();
+			students[i] = new Student("John", "Jane", Student.Rank.GRAD);
 		}
 
 		for (int k = 0; k < numProfs; k++) {

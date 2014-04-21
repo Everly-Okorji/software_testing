@@ -1,14 +1,14 @@
-class Prof {
+public class Prof {
 	
-	Graded[] students;
+	Student[] students;
 	short credits;
 	
-	Prof(Graded[] allStudents) {
+	Prof(Student[] allStudents) {
 		students = allStudents;
 		credits = (short) ((Math.random() * 5) + 1);
 	}
 	
-	Prof(Graded[] allStudents, short creditHours) {
+	Prof(Student[] allStudents, short creditHours) {
 		assert(creditHours >= 1 && creditHours <= 5);
 		students = allStudents;
 		credits = creditHours;

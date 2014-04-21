@@ -1,21 +1,35 @@
-class EmailAccount {
+class Student {
 
-	/**
-	 *
-	 */
+	enum Rank {
+		GRAD, UNDERGRAD
+	};
+
 	private String first_name;
 	private String last_name;
 	private int dotNo;
 	private static String[] lastnames = new String[0];
 	private static int[] maxDotNo = new int[0];
 
+	private Graded grade;
+
 	// this constructor takes two String arguments, the first being the person's
 	// first name and the second being the person's last name
-	public EmailAccount(String first, String last) {
+	public Student(String first, String last, Rank rank) {
 		first_name = first;
 		last_name = last;
 		int i;
 		boolean foundAMatch = false;
+
+		switch (rank) {
+		case UNDERGRAD:
+			grade = new Undergrad();
+			break;
+		case GRAD:
+			grade = new Grad();
+			break;
+		default:
+			break;
+		}
 
 		// Search the array of last names to see if we already have someone else
 		// with the same last name or we're at the end of the array
@@ -55,7 +69,19 @@ class EmailAccount {
 	// email address
 	public String getEmailAddress() {
 		String x = last_name.toLowerCase();
-		String name = x + "." + dotNo + "@osu.edu";
+		String name = x + "." + dotNo + "@utexas.edu";
 		return name;
+	}
+	
+	public void assignGrade (short credit, LetterGrade lettergrade) {
+		grade.assignGrade(credit, lettergrade);
+	}
+	
+	public float getGPA () {
+		return grade.getGPA();
+	}
+	
+	public int getTotalCredits() {
+		return grade.getTotalCredits();
 	}
 }
