@@ -1,8 +1,0 @@
-3 = Hospital 3 = Residents
-1 1 1 = Hospital Slots for each
-2 1 0 = Hospital 0 Pref
-0 2 1 = Hospital 1 Pref
-1 0 2 = Hospital 2 Pref
-0 2 1 = Res 0 Pref
-1 0 2 = Res 1 Pref
-0 1 2 = Res 2 Pref
