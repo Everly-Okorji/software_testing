@@ -68,8 +68,8 @@ public class ProfTest {
 		}
 		assertTrue("Credits for this professor's course must be 4!", profWithSetCredits.credits == 4);
 		
-		assertTrue("Credits for this professor's course must be 1!", (new Prof(students, (short)1)).credits == 1);
-		assertTrue("Credits for this professor's course must be 5!", (new Prof(students, (short)5)).credits == 5);
+		assertEquals("Credits for this professor's course is incorrect!", 1, (new Prof(students, (short)1)).credits);
+		assertEquals("Credits for this professor's course is incorrect!", 5, (new Prof(students, (short)5)).credits);
 	}
 	
 	@Test (expected=AssertionError.class)
@@ -91,7 +91,7 @@ public class ProfTest {
 		for (int k = 0; k < result.length; k++) {
 			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 && result[k].getGPA() <= 4.0);
 			assertTrue("Student GPAs must be equal to one of the pre-defined letter grades (only one class taken)!", creditValue.containsValue(result[k].getGPA()));
-			assertTrue("All students must be assigned the same credits!", result[k].getTotalCredits() == credits);
+			assertEquals("All students must be assigned the same credits!", credits, result[k].getTotalCredits());
 		}
 		
 		profWithSetCredits = new Prof(result, (short)1);
@@ -99,7 +99,7 @@ public class ProfTest {
 		result = profWithSetCredits.evaluate();
 		for (int k = 0; k < result.length; k++) {
 			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 || result[k].getGPA() <= 4.0);
-			assertTrue("All students must be assigned the same credits!", result[k].getTotalCredits() == credits);
+			assertEquals("All students must be assigned the same credits!", credits, result[k].getTotalCredits());
 		}
 		
 		LetterGrade[] grades = {LetterGrade.APURE, LetterGrade.CPURE, LetterGrade.APURE, LetterGrade.APURE, LetterGrade.BPLUS, LetterGrade.BPLUS, LetterGrade.BPURE, LetterGrade.APURE, LetterGrade.DPURE, LetterGrade.APURE};
@@ -111,7 +111,7 @@ public class ProfTest {
 		result = prof.evaluate(grades);
 		for (int k = 0; k < result.length; k++) {
 			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 || result[k].getGPA() <= 4.0);
-			assertTrue("All students must be assigned the appropriate credits!", result[k].getTotalCredits() == credits);
+			assertEquals("All students must be assigned the appropriate credits!", credits, result[k].getTotalCredits());
 			assertTrue("All student GPAs must equal assigned letter grade (note: one class)!", creditValue.get(grades[k]) == result[k].getGPA());
 		}
 	}
