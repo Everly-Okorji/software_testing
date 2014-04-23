@@ -1,4 +1,8 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +14,7 @@ public class ProfTest {
 	Prof prof;
 	Prof profWithSetCredits;
 	Student[] students;
+	Map<LetterGrade, Float> creditValue = new HashMap<LetterGrade, Float>();
 	
 	@Before
 	public void setUp() throws Exception {
@@ -26,6 +31,18 @@ public class ProfTest {
 		
 		prof = new Prof(students);
 		profWithSetCredits = new Prof(students, (short) 4);
+		
+		creditValue.put(LetterGrade.APURE, 4.0f);
+		creditValue.put(LetterGrade.AMINUS, 3.7f);
+		creditValue.put(LetterGrade.BPLUS, 3.3f);
+		creditValue.put(LetterGrade.BPURE, 3.0f);
+		creditValue.put(LetterGrade.BMINUS, 2.7f);
+		creditValue.put(LetterGrade.CPLUS, 2.3f);
+		creditValue.put(LetterGrade.CPURE, 2.0f);
+		creditValue.put(LetterGrade.CMINUS, 1.7f);
+		creditValue.put(LetterGrade.DPLUS, 1.3f);
+		creditValue.put(LetterGrade.DPURE, 1.0f);
+		creditValue.put(LetterGrade.EPURE, 0.0f);
 	}
 
 	@After
@@ -68,6 +85,35 @@ public class ProfTest {
 	@Test
 	public void testEvaluate() {
 		
+		short credits = prof.credits;
+		
+		Student[] result = prof.evaluate();
+		for (int k = 0; k < result.length; k++) {
+			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 && result[k].getGPA() <= 4.0);
+			assertTrue("Student GPAs must be equal to one of the pre-defined letter grades (only one class taken)!", creditValue.containsValue(result[k].getGPA()));
+			assertTrue("All students must be assigned the same credits!", result[k].getTotalCredits() == credits);
+		}
+		
+		profWithSetCredits = new Prof(result, (short)1);
+		credits +=1;
+		result = profWithSetCredits.evaluate();
+		for (int k = 0; k < result.length; k++) {
+			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 || result[k].getGPA() <= 4.0);
+			assertTrue("All students must be assigned the same credits!", result[k].getTotalCredits() == credits);
+		}
+		
+		LetterGrade[] grades = {LetterGrade.APURE, LetterGrade.CPURE, LetterGrade.APURE, LetterGrade.APURE, LetterGrade.BPLUS, LetterGrade.BPLUS, LetterGrade.BPURE, LetterGrade.APURE, LetterGrade.DPURE, LetterGrade.APURE};
+		for (int i = 0; i < 10; i++) {
+			students[i] = new Student("Johnson-" + i, "Riley", Student.Rank.UNDERGRAD);
+		};
+		prof = new Prof(students, (short)5);
+		credits = 5;
+		result = prof.evaluate(grades);
+		for (int k = 0; k < result.length; k++) {
+			assertTrue("GPAs must be between 0.0 and 4.0!", result[k].getGPA() >= 0.0 || result[k].getGPA() <= 4.0);
+			assertTrue("All students must be assigned the appropriate credits!", result[k].getTotalCredits() == credits);
+			assertTrue("All student GPAs must equal assigned letter grade (note: one class)!", creditValue.get(grades[k]) == result[k].getGPA());
+		}
 	}
 
 }
