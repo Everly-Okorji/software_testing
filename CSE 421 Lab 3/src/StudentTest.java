@@ -15,9 +15,6 @@ public class StudentTest {
 		undergrad = new Student("Janet", "Trust", Student.Rank.UNDERGRAD);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testFullName() {
@@ -27,13 +24,28 @@ public class StudentTest {
 	
 	@Test
 	public void testEmailAddress() {
-		
+		grad = new Student("John", "Moss", Student.Rank.GRAD);
+		undergrad = new Student("Janet", "Trust", Student.Rank.UNDERGRAD);
+		assertTrue("Grad student's email adress is incorrect!", "moss.1@utexas.edu".equals(grad.getEmailAddress()));
+		assertTrue("Grad student's email adress is incorrect!", "trust.2@utexas.edu".equals(undergrad.getEmailAddress()));
+	}
+	
+	
+	@Test
+	public void testAssignGrade() {
+		grad = new Student("John", "Moss", Student.Rank.GRAD);
+		grad.assignGrade((short) 3, LetterGrade.APURE);
+		assertTrue("Grad student's assigned grade is incorrect", grad.getGPA() == 4);
 	}
 	
 	@Test
-	public void testGPA() {
-		
+	public void testTotalCredits() {
+		grad = new Student("John", "Moss", Student.Rank.GRAD);
+		grad.assignGrade((short) 3, LetterGrade.APURE);
+		assertTrue("Grad student's total credits is incorrect", grad.getTotalCredits() == 3);
 	}
+	
+	
 	
 	
 
