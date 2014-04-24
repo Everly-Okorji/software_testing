@@ -45,8 +45,13 @@ public class StudentTest {
 		assertTrue("Grad student's total credits is incorrect", grad.getTotalCredits() == 3);
 	}
 	
-	
-	
+    public static void main(String args[]) {
+        String[] testCaseName = 
+            { StudentTest.class.getName() };
+        // junit.swingui.TestRunner.main(testCaseName);
+        junit.textui.TestRunner.main(testCaseName);
+    }
+
 	
 
 }

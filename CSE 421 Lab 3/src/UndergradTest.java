@@ -1,11 +1,11 @@
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 
-public class UndergradTest {
+public class UndergradTest extends TestCase {
 
 	Graded undergrad;
 	
@@ -73,5 +73,10 @@ public class UndergradTest {
 		assertEquals("GPA is incorrect!", ((3.3f * 4) + (1.7f * 3) + (4.0f * 1)) / 8, undergrad.getGPA(), 0.001);
 	}
 	
-	
+    public static void main(String args[]) {
+        String[] testCaseName = 
+            { UndergradTest.class.getName() };
+        // junit.swingui.TestRunner.main(testCaseName);
+        junit.textui.TestRunner.main(testCaseName);
+    }
 }

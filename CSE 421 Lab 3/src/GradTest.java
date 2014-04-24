@@ -73,5 +73,11 @@ public class GradTest {
 		assertEquals("GPA is incorrect!", ((3.3f * 4) + (1.7f * 3) + (4.0f * 1)) / 8, grad.getGPA(), 0.001);
 	}
 	
-	
+    public static void main(String args[]) {
+        String[] testCaseName = 
+            { GradTest.class.getName() };
+        // junit.swingui.TestRunner.main(testCaseName);
+        junit.textui.TestRunner.main(testCaseName);
+    }
+    
 }

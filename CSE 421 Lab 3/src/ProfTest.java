@@ -115,5 +115,12 @@ public class ProfTest {
 			assertTrue("All student GPAs must equal assigned letter grade (note: one class)!", creditValue.get(grades[k]) == result[k].getGPA());
 		}
 	}
+	
+    public static void main(String args[]) {
+        String[] testCaseName = 
+            { ProfTest.class.getName() };
+        // junit.swingui.TestRunner.main(testCaseName);
+        junit.textui.TestRunner.main(testCaseName);
+    }
 
 }
