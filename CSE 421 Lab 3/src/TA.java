@@ -29,11 +29,12 @@ public class TA {
 		creditValue.put("E", LetterGrade.EPURE);
 
 		Scanner in;
+		int count = 0;
+		
 		try {
 			in = new Scanner(new File("inputs/jpf1"));
 
 			while (in.hasNextLine()) {
-
 				int numProfs;
 				int numStudents;
 
@@ -100,11 +101,14 @@ public class TA {
 							+ new DecimalFormat().format(students[i].getGPA()));
 				}
 				System.out.println("");
+				count++;
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Ran " + count + " test cases.");
 
 	}
 
