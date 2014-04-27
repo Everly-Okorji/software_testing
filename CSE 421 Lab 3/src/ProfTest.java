@@ -8,6 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ut.LetterGrade;
+import ut.Prof;
+import ut.Student;
+
 
 public class ProfTest {
 
@@ -56,7 +60,7 @@ public class ProfTest {
 			String name = "Jesse-" + k + " Smith";
 			assertTrue("Student names must match!", name.equals(prof.students[k].getName()));
 		}
-		assertTrue("Credits for a professor's course must be between 1 and 5!", prof.credits >= 1 && prof.credits <= 5);
+		assertTrue("Credits for a professor's course must be between 1 and 5!", prof.getCredits() >= 1 && prof.getCredits() <= 5);
 	}
 	
 	@Test
@@ -66,10 +70,10 @@ public class ProfTest {
 			String name = "Jesse-" + k + " Smith";
 			assertTrue("Student names must match!", name.equals(profWithSetCredits.students[k].getName()));
 		}
-		assertTrue("Credits for this professor's course must be 4!", profWithSetCredits.credits == 4);
+		assertTrue("Credits for this professor's course must be 4!", profWithSetCredits.getCredits() == 4);
 		
-		assertEquals("Credits for this professor's course is incorrect!", 1, (new Prof(students, (short)1)).credits);
-		assertEquals("Credits for this professor's course is incorrect!", 5, (new Prof(students, (short)5)).credits);
+		assertEquals("Credits for this professor's course is incorrect!", 1, (new Prof(students, (short)1)).getCredits());
+		assertEquals("Credits for this professor's course is incorrect!", 5, (new Prof(students, (short)5)).getCredits());
 	}
 	
 	@Test (expected=AssertionError.class)
@@ -85,7 +89,7 @@ public class ProfTest {
 	@Test
 	public void testEvaluate() {
 		
-		short credits = prof.credits;
+		short credits = prof.getCredits();
 		
 		Student[] result = prof.evaluate();
 		for (int k = 0; k < result.length; k++) {

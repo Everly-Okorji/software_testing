@@ -1,3 +1,4 @@
+package ut;
 
 public enum LetterGrade {
 	EPURE, DPURE, DPLUS, CMINUS, CPURE, CPLUS, BMINUS, BPURE, BPLUS, AMINUS, APURE

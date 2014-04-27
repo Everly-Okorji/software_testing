@@ -1,14 +1,15 @@
+package ut;
 public class Prof {
 	
 	public Student[] students;
 	short credits;
 	
-	Prof(Student[] allStudents) {
+	public Prof(Student[] allStudents) {
 		students = allStudents;
 		credits = (short) ((Math.random() * 5) + 1);
 	}
 	
-	Prof(Student[] allStudents, short creditHours) {
+	public Prof(Student[] allStudents, short creditHours) {
 		assert(creditHours >= 1 && creditHours <= 5);
 		students = allStudents;
 		credits = creditHours;

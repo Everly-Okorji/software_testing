@@ -1,3 +1,4 @@
+package ut;
 public class Grad implements Graded {
 
 	private LetterGrade[] grades;

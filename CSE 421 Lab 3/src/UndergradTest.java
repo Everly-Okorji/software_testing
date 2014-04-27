@@ -4,6 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ut.Graded;
+import ut.LetterGrade;
+import ut.Undergrad;
+
 
 public class UndergradTest extends TestCase {
 

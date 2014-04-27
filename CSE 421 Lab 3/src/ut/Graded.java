@@ -1,3 +1,4 @@
+package ut;
 /**
  * A student, capable of taking courses for credit and receiving letter grades
  * in such courses. The sum total of all courses taken (and their associated

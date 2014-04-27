@@ -1,6 +1,7 @@
-class Student {
+package ut;
+public class Student {
 
-	enum Rank {
+	public enum Rank {
 		GRAD, UNDERGRAD
 	};
 

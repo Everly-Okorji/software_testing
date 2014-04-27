@@ -1,3 +1,4 @@
+package ut;
 public class Undergrad implements Graded {
 
 	// Declare variables to store incoming grades and calculate scores

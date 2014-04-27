@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import ut.LetterGrade;
+import ut.Prof;
+import ut.Student;
+
+import gov.nasa.jpf.vm.Verify;
+
 public class TA {
 
 	public static void main(String[] args) {
@@ -24,7 +30,7 @@ public class TA {
 
 		Scanner in;
 		try {
-			in = new Scanner(new File("input"));
+			in = new Scanner(new File("inputs/jpf1"));
 
 			while (in.hasNextLine()) {
 
@@ -53,7 +59,7 @@ public class TA {
 				//System.out.print("Enter number of students: ");
 				input = in.nextLine();
 				numStudents = Integer.parseInt(input);
-
+				
 				Student[] students = new Student[numStudents];
 
 				// Get student information
