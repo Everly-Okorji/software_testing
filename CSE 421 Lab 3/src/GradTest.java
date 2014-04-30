@@ -1,17 +1,16 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import ut.Grad;
-import ut.Graded;
 import ut.LetterGrade;
 
 
 public class GradTest {
 
-	Graded grad;
+	Grad grad;
 	
 	@Before
 	public void setUp() throws Exception {
