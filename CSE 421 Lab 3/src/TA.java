@@ -29,10 +29,10 @@ public class TA {
 		creditValue.put("E", LetterGrade.EPURE);
 
 		Scanner in;
-		int count = 0;
+		int count = 0, failed = 0;
 		
 		try {
-			in = new Scanner(new File("inputs/jpf1"));
+			in = new Scanner(new File("inputs/1p2s"));
 
 			while (in.hasNextLine()) {
 				int numProfs;
@@ -95,12 +95,21 @@ public class TA {
 					new Prof(students, credits[i]).evaluate(grades);
 				}
 
-				for (int i = 0; i < numStudents; i++) {
-					System.out.println(students[i].getName() + " ("
-							+ students[i].getEmailAddress() + ") had a GPA of "
-							+ new DecimalFormat().format(students[i].getGPA()));
+				try {
+					for (int i = 0; i < numStudents; i++) {
+						
+						// Check validity of test cases
+						assert ((students[i].getGPA() > -0.001) && (students[i].getGPA() < 4.001));
+						assert (students[i].getName() != null);
+						assert (students[i].getName().split(" ").length == 2);
+						assert (students[i].getEmailAddress().contains(students[i].getName().split(" ")[1].toLowerCase()));
+						
+					}
+				} catch (AssertionError e) {
+					failed++;
+					System.out.println("Assertion error found on test case " + (count+1));
 				}
-				System.out.println("");
+		
 				count++;
 			}
 			in.close();
@@ -109,6 +118,8 @@ public class TA {
 		}
 		
 		System.out.println("Ran " + count + " test cases.");
+		System.out.println((count - failed) + " tests passed.");
+		System.out.println(failed + " tests failed.");
 
 	}
 
